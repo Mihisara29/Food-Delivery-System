@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 import java.util.List;
 
@@ -43,6 +44,12 @@ public class FoodController {
     @GetMapping("/{id}")
     public FoodResponse readFood(@PathVariable String id){
         return foodService.readFood(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFood(@PathVariable String id){
+        foodService.deleteFood(id);
     }
 
 
