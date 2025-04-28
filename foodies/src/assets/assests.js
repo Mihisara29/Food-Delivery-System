@@ -1,0 +1,50 @@
+import logo from './logo.png';
+import cart from './cart.png';
+import biryani from './biryani.png';
+import burger from './burger.png';
+import iceCream from './ice-cream.png';
+import pizza from './pizza.png';
+import rolls from './rolls.png';
+import cake from './cake.png';
+import salad from './salad.png';
+ 
+
+export const assests = {
+   logo,
+   cart
+}
+
+export const catagories = [
+
+   {
+      category: 'Biriyani',
+      icon: biryani,
+   },
+   {
+      category: 'Burger',
+      icon: burger,
+   },
+   {
+      category: 'Cakes',
+      icon: cake,
+   },
+   {
+      category: 'Ice-Creams',
+      icon: iceCream,
+   },
+   {
+      category: 'Pizza',
+      icon: pizza,
+   },
+   {
+      category: 'Rolls',
+      icon: rolls,
+   },
+   {
+      category: 'Salad',
+      icon: salad,
+   },
+   
+   
+
+];
