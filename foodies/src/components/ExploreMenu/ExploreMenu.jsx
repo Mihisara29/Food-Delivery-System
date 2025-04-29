@@ -2,7 +2,7 @@ import React,{useRef} from "react";
 import { catagories } from "../../assets/assests";
 import './ExploreMenu.css';
 
-const ExploreMenu = () => {
+const ExploreMenu = ({category,setCategory}) => {
 
 const menuRef = useRef(null);
 const scrollLeft = () => {
