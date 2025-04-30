@@ -1,5 +1,4 @@
 import { createContext,useState,useEffect } from "react";
-import axios from "axios";
 import { fetchFoodList } from "../service/foodservice";
 
 export const StoreContext = createContext(null);
@@ -19,9 +18,21 @@ export const StoreContextProvider = (props) => {
       [foodId]: prev[foodId] > 0 ? prev[foodId] - 1 : 0
     }));
   };
+
+  const removeFromCart = (foodId) => {
+     setQuantities((prevQuantities) => {
+        const updatedQuantities = {...prevQuantities}
+        delete updatedQuantities[foodId];
+        return updatedQuantities;
+     })
+  }
   
   const contextValue = {
-      foodList
+      foodList,
+      quantities,
+      increaseQuantity,
+      decreaseQuantity,
+      removeFromCart,
   };
 
   useEffect (() => {
