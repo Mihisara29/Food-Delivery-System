@@ -7,7 +7,7 @@ const Menubar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
   <div className="container-fluid">
-    <img src={assests.logo} alt="" className='mx-2' height={48} width={48}/>
+    <Link to='/'><img src={assests.logo} alt="" className='mx-2' height={48} width={48}/></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

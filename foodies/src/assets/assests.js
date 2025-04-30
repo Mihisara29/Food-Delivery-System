@@ -17,7 +17,7 @@ export const assests = {
 export const catagories = [
 
    {
-      category: 'Biriyani',
+      category: 'Biryani',
       icon: biryani,
    },
    {
@@ -25,11 +25,11 @@ export const catagories = [
       icon: burger,
    },
    {
-      category: 'Cakes',
+      category: 'Cake',
       icon: cake,
    },
    {
-      category: 'Ice-Creams',
+      category: 'Ice cream',
       icon: iceCream,
    },
    {
