@@ -3,10 +3,12 @@ import './Menubar.css';
 import { assests } from '../../assets/assests';
 import { Link } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import { useState } from 'react';
 
 const Menubar = () => {
   const {quantities} = useContext(StoreContext);
   const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
+  const[active,setActive] = useState('home');
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
   <div className="container-fluid">
@@ -17,13 +19,15 @@ const Menubar = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link" to="/">Home</Link>
+          <Link className={active === 'home' ? 'nav-link fw-bold active': 'nav-link'} to="/" onClick={()=>setActive('home')}>Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/explore">Explore</Link>
+          <Link className={active === 'explore' ? 'nav-link fw-bold active': 'nav-link'} to="/explore" 
+          onClick={()=>setActive('explore')}
+          >Explore</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/contact">Contact us</Link>
+          <Link className={active === 'contact' ? 'nav-link fw-bold active': 'nav-link'} to="/contact" onClick={()=>setActive('contact')}>Contact us</Link>
         </li>
       </ul>
       <div className="d-flex align-items-center gap-4">
