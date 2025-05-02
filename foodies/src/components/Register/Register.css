@@ -1,0 +1,8 @@
+.register-container{
+  background-image: url("../../assets/login-page-background-image.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center;
+}
