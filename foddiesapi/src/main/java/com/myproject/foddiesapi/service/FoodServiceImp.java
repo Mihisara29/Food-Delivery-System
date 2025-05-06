@@ -119,7 +119,7 @@ public String uploadFile(MultipartFile file){
        return FoodResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())
-                .description(entity.getDescription())
+                .description (entity.getDescription())
                 .category(entity.getCategory())
                 .price(entity.getPrice())
                 .imageUrl(entity.getImageUrl())
