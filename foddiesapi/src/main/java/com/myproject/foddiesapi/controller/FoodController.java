@@ -7,6 +7,7 @@ import com.myproject.foddiesapi.io.FoodResponse;
 import com.myproject.foddiesapi.service.FoodService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -38,6 +39,7 @@ public class FoodController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<FoodResponse> readFoods(){
         return foodService.readFoods();
     }
