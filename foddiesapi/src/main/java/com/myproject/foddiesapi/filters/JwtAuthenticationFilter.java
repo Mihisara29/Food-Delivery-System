@@ -43,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
                 if (jwtUtil.validateToken(token, userDetails)) {
-                    // ✅ Extract roles from JWT and map to authorities
+
                     Claims claims = jwtUtil.extractAllClaims(token);
                     List<String> roles = claims.get("roles", List.class);
                     List<SimpleGrantedAuthority> authorities = roles.stream()
@@ -55,8 +55,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-                    System.out.println("✅ Token authenticated for user: " + userDetails.getUsername());
-                    System.out.println("✅ Authorities: " + authorities);
                 }
             }
         }

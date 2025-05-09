@@ -39,7 +39,6 @@ public class FoodController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<FoodResponse> readFoods(){
         return foodService.readFoods();
     }
