@@ -3,15 +3,29 @@ import './Menubar.css';
 import { assests } from '../../assets/assests';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+
+
 
 const Menubar = () => {
 
 
-  const {quantities} = useContext(StoreContext);
-  const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
+  const {quantities,token,setToken,setQuantities} = useContext(StoreContext);
+  const uniqueItemsInCart = Object.values(quantities || {}).filter(qty => qty > 0).length;
   const[active,setActive] = useState('home');
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+    setQuantities({});
+  }
+  
+  useEffect(() => {
+    console.log("Current token value:", token);
+    console.log("LocalStorage token:", localStorage.getItem("token"));
+  }, [token]);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -36,11 +50,34 @@ const Menubar = () => {
       </ul>
       <div className="d-flex align-items-center gap-4">
         <Link to={`/cart`}><div className="position-relative">
-          <img src={assests.cart} alt='' height={32} width={32} className='position-relative'/>
+          <img src={assests.cart} alt='' height={26} width={26} className='position-relative'/>
           <span className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning'>{uniqueItemsInCart}</span>
         </div></Link>
-        <button className='btn btn-outline-primary' onClick={( () => navigate('/login'))}>Login</button>
-        <button className='btn btn-outline-success' onClick={( () => navigate('/register'))}>Register</button>
+        {!token || token === "" ? (
+          <>
+            <button className='btn btn-outline-primary btn-sm' onClick={() => navigate('/login')}>
+              Login
+            </button>
+            <button className='btn btn-outline-success btn-sm' onClick={() => navigate('/register')}>
+              Register
+            </button>
+          </>
+        ) : (
+          <div className='dropdown'>
+            <a href='#' className='d-block link-body-emphasis text-decoration-none dropdown-toggle' 
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <img src={assests.profile} width={32} height={32} className='rounded-circle'/>
+            </a>
+            <ul className="dropdown-menu text-small curser-pointer">
+              <li className="dropdown-item" onClick={() => navigate('/myorders')}>
+                Orders
+              </li>
+              <li className="dropdown-item" onClick={logout}>
+                Logout
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   </div>
