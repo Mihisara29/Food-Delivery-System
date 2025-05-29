@@ -36,7 +36,7 @@ const FoodItem = ({ name, description, id, imageUrl, price }) => {
           <Link to={`/food/${id}`} className="btn btn-primary btn-sm">
             View Food
           </Link>
-          {quantities[id] > 0 ? (
+          {quantities && quantities[id]> 0 ? (
             <div className="d-flex align-items-center gap-2">
               <button className="btn btn-danger btn-sm" onClick={() =>{decreaseQuantity(id)}}>
                 <i className="bi bi-dash-circle"></i>
