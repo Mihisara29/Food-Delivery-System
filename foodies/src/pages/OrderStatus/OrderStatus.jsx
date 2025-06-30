@@ -31,10 +31,19 @@ const OrderStatus = () => {
     return <span className={`badge bg-${badgeClass}`}>{status}</span>;
   };
 
+
   useEffect(() => {
     console.log(orderId);
     const checkOrderStatus = async () => {
       try {
+
+          try {
+                  const response = await axios.delete(
+        "http://localhost:8080/api/delete");
+          } catch (error) {
+            
+          }
+
         console.log("Token being sent:", token);
         const response = await axios.get(
           `http://localhost:8080/api/orders/${orderId}`,
